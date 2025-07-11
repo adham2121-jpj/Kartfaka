@@ -4,16 +4,83 @@
   <meta charset="UTF-8">
   <title>اكسب كارت شحن مجانا!</title>
   <style>
-    body { font-family: Arial; background-color: #f9f9f9; text-align: center; padding: 40px; }
-    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #aaa; max-width: 400px; margin: auto; }
-    .button { background: green; color: white; padding: 15px 25px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial;
+      padding: 40px;
+      text-align: center;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #msg {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>اكسب كارت شحن مجاني!</h2>
-    <p>جرب حظك دلوقتي واكسب كارت بـ100 جنيه</p>
-    <button class="button" onclick="alert('مبروك! كسبت كارت شحن بـ100 جنيه!')">اضغط هنا</button>
+  <div class="box">
+    <h2>اكسب كارت شحن مجاني 💳</h2>
+    <p>اكتب اسمك ورقمك واختار الشركة</p>
+    <input type="text" id="name" placeholder="اسمك">
+    <input type="tel" id="phone" placeholder="رقم موبايلك">
+    <select id="company">
+      <option value="">اختر الشركة</option>
+      <option value="فودافون">فودافون</option>
+      <option value="أورنج">أورنج</option>
+      <option value="اتصالات">اتصالات</option>
+      <option value="WE">WE</option>
+    </select>
+    <button onclick="submitForm()">اشترك</button>
+    <p id="msg"></p>
   </div>
+
+  <script>
+    function generateCard() {
+      let code = "";
+      for (let i = 0; i < 14; i++) {
+        code += Math.floor(Math.random() * 10);
+      }
+      return code;
+    }
+
+    function submitForm() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let company = document.getElementById("company").value;
+      let msg = document.getElementById("msg");
+
+      if (name && phone && company) {
+        let card = generateCard();
+        msg.innerText = `✅ مبروك يا ${name}!\nشركة: ${company}\nكارتك: ${card}`;
+      } else {
+        msg.innerText = "❌ من فضلك املأ كل الخانات.";
+        msg.style.color = "red";
+      }
+    }
+  </script>
 </body>
 </html>

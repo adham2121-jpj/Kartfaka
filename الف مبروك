@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>اشترك واكسب كارت شحن</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: Arial;
+      padding: 40px;
+      text-align: center;
+    }
+    .form-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: auto;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>اشترك واكسب كارت شحن 100 جنيه!</h2>
+    <input type="text" placeholder="ادخل اسمك" id="name">
+    <input type="tel" placeholder="ادخل رقم موبايلك" id="phone">
+    <button onclick="submitForm()">اشترك الآن</button>
+    <p id="message" style="color: green; margin-top: 15px;"></p>
+  </div>
+
+  <script>
+    function submitForm() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      if(name && phone){
+        document.getElementById("message").innerText = "شكراً يا " + name + "! تم تسجيل اشتراكك.";
+      } else {
+        document.getElementById("message").innerText = "من فضلك املأ كل الخانات.";
+      }
+    }
+  </script>
+
+</body>
+</html>
